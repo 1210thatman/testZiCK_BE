@@ -5,8 +5,6 @@ import org.example.zick.domain.user.persistence.dto.response.UserResponse;
 import org.example.zick.domain.user.service.GetStudentByStudentNameService;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
-
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/users")
