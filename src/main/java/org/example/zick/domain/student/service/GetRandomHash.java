@@ -1,8 +1,6 @@
 package org.example.zick.domain.student.service;
 
 import lombok.RequiredArgsConstructor;
-import org.example.zick.domain.user.domain.repository.UserRepository;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.nio.charset.StandardCharsets;
