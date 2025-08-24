@@ -14,7 +14,7 @@ public class UserController {
     private final GetStudentByStudentNameService getStudentByStudentNameService;
 
     @GetMapping("/me")
-    public UserResponse getUserByUserName(@RequestBody String userName) {
+    public UserResponse getUserByUserName(@RequestParam String userName) {
         return getStudentByStudentNameService.excute(userName);
     }
 }

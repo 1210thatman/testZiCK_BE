@@ -15,6 +15,7 @@ public class ErrorResponseEntity {
         return ResponseEntity
                 .status(errorCode.getStatusCode())
                 .body(ErrorResponseEntity.builder()
+                        .statusCode(errorCode.getStatusCode())
                         .type(errorCode.getType())
                         .build());
     }
