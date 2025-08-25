@@ -10,7 +10,8 @@ import lombok.Getter;
 public enum ErrorCode {
     INTERNAL_SERVER_ERROR("internalServerError", 500),
     BAD_REQUEST_VALIDATION("validationError", 400),
-    USER_NOT_FOUND("userNotFound", 404);
+    USER_NOT_FOUND("userNotFound", 404),
+    QR_EXPIRED("qrExpired", 401);
     private final String type;
     private final int statusCode;
 }
