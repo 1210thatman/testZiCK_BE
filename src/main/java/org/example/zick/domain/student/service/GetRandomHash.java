@@ -37,7 +37,7 @@ public class GetRandomHash {
         RedisHashEntry entry = RedisHashEntry.builder()
                 .key(hash)
                 .value(String.valueOf(studentId))
-                .ttl(300L)
+                .ttl(300L) //테스트용으로 5분으로 설정 차후 30초로 설정 예정.
                 .build();
         ValueOperations<String, String> ops = redisTemplate.opsForValue();
         ops.set(entry.getKey(), String.valueOf(entry.getValue()), entry.getTtl(), TimeUnit.SECONDS);
