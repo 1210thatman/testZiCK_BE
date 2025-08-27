@@ -15,7 +15,7 @@ import org.springframework.data.redis.core.TimeToLive;
 @RedisHash(value = "student_hash")
 public class StudentHash {
     @Id
-    private String hash;
+    private String key;
 
     private String studentId;
 
