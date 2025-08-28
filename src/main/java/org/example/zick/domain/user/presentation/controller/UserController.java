@@ -1,7 +1,7 @@
 package org.example.zick.domain.user.presentation.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.example.zick.domain.user.persistence.dto.response.UserResponse;
+import org.example.zick.domain.user.persistence.dto.response.StudentResponse;
 import org.example.zick.domain.user.service.GetStudentByStudentNameService;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,7 +12,7 @@ public class UserController {
     private final GetStudentByStudentNameService getStudentByStudentNameService;
 
     @GetMapping("/me")
-    public UserResponse getUserByUserName(@RequestParam String userName) {
-        return getStudentByStudentNameService.excute(userName);
+    public StudentResponse getUserByUserName(@RequestParam String userName) {
+        return getStudentByStudentNameService.execute(userName);
     }
 }

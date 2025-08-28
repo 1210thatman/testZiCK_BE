@@ -16,8 +16,9 @@ public class CheckCanEnterService {
         Long studentId = studentHashRepository.findById(key)
                 .map(studentHash -> Long.valueOf(studentHash.getStudentId()))
                 .orElseThrow(() -> KeyNotFoundException.EXCEPTION);
-        Boolean canEnter = userRepository.findAppliedById(studentId);
+        Boolean isEnter = userRepository.findAppliedById(studentId);
 
-        return new CanEnterResponse(canEnter);
+        return new CanEnterResponse(isEnter);
     }
 }
+
