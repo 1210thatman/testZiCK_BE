@@ -13,6 +13,6 @@ public class UserController {
 
     @GetMapping("/me")
     public StudentResponse getUserByUserName(@RequestParam String userName) {
-        return getStudentByStudentNameService.execute(userName);
+        return null;
     }
 }
