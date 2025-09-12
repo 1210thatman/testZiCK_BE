@@ -15,6 +15,7 @@ public class AttendanceLog {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private MealType mealType;
 
@@ -24,4 +25,10 @@ public class AttendanceLog {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(nullable = false)
     private User user;
+
+    public AttendanceLog(User user, MealType mealType, Boolean status) {
+        this.user = user;
+        this.mealType = mealType;
+        this.status = status;
+    }
 }
