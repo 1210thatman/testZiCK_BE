@@ -4,15 +4,17 @@ import lombok.Getter;
 import org.example.zick.domain.user.domain.User;
 
 @Getter
-public class StudentResponse {
-    private String studentNumber;
-    private String userName;
-    private Boolean applied;
-    private Boolean verified;
+public class StudentMyPageResponse implements MyPageResponse {
+    private final String studentNumber;
+    private final String userName;
+    private final String userId;
+    private final Boolean applied;
+    private final Boolean verified;
 
-    public StudentResponse(User user) {
+    public StudentMyPageResponse(User user) {
         this.studentNumber = user.getStudentNumber();
         this.userName = user.getUserName();
+        this.userId = user.getLoginId();
         this.applied = user.getApplied();
         this.verified = user.getVerified();
     }
