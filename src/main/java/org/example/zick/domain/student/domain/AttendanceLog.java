@@ -15,10 +15,10 @@ public class AttendanceLog {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private MealType mealType;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private Boolean status;
 
     @ManyToOne(fetch = FetchType.LAZY)
