@@ -1,9 +1,7 @@
 package org.example.zick.domain.student.service;
 
 import lombok.RequiredArgsConstructor;
-import org.example.zick.domain.student.persistence.request.RedisHashEntry;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
 
 import java.nio.charset.StandardCharsets;
@@ -34,12 +32,7 @@ public class GetRandomHash {
     }
 
     private void saveHashToRedis(String hash, Long studentId) {
-        RedisHashEntry entry = RedisHashEntry.builder()
-                .key(hash)
-                .value(String.valueOf(studentId))
-                .ttl(300L) //테스트용으로 5분으로 설정 차후 30초로 설정 예정.
-                .build();
-        ValueOperations<String, String> ops = redisTemplate.opsForValue();
-        ops.set(entry.getKey(), String.valueOf(entry.getValue()), entry.getTtl(), TimeUnit.SECONDS);
+        //나중에 300L(5분) -> 30L(30초)로 변경할 것
+        redisTemplate.opsForValue().set(hash, String.valueOf(studentId), 300L, TimeUnit.SECONDS);
     }
 }

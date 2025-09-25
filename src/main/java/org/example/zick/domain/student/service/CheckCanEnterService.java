@@ -5,7 +5,7 @@ import org.example.zick.domain.student.domain.AttendanceLog;
 import org.example.zick.domain.student.domain.MealType;
 import org.example.zick.domain.student.domain.repository.AttendanceLogRepository;
 import org.example.zick.domain.student.exception.KeyNotFoundException;
-import org.example.zick.domain.student.persistence.response.CanEnterResponse;
+import org.example.zick.domain.student.persistence.response.CheckCanEnterResponse;
 import org.example.zick.domain.user.domain.User;
 import org.example.zick.domain.user.domain.repository.UserRepository;
 import org.example.zick.domain.user.exception.UserNotFoundException;
@@ -20,14 +20,14 @@ public class CheckCanEnterService {
     private final UserRepository userRepository;
     private final AttendanceLogRepository attendanceLogRepository;
 
-    public CanEnterResponse execute(String key){
+    public CheckCanEnterResponse execute(String key){
         String studentIdStr = redisTemplate.opsForValue().get(key);
         if(studentIdStr == null){
             throw KeyNotFoundException.EXCEPTION;
         }
         Long studentId = Long.valueOf(studentIdStr);
 
-        Boolean applied = userRepository.findAppliedById(studentId);
+        Boolean applied = userRepository.findById(studentId).orElseThrow(() -> UserNotFoundException.EXCEPTION).getApplied();
         boolean status = applied != null && applied; //신청 시 true, 아니면 false
 
         MealType mealType = MealTypeUtil.getCurrentMealType();
@@ -38,7 +38,7 @@ public class CheckCanEnterService {
         AttendanceLog log = new AttendanceLog(user, mealType, status);
         attendanceLogRepository.save(log);
 
-        return new CanEnterResponse(status);
+        return new CheckCanEnterResponse(status);
     }
 }
 

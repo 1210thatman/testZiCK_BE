@@ -2,7 +2,8 @@ package org.example.zick.domain.student.prsentation.controller;
 
 
 import lombok.RequiredArgsConstructor;
-import org.example.zick.domain.student.persistence.response.CanEnterResponse;
+import org.example.zick.domain.student.persistence.request.CheckCanEnterRequest;
+import org.example.zick.domain.student.persistence.response.CheckCanEnterResponse;
 import org.example.zick.domain.student.service.CheckCanEnterService;
 import org.example.zick.domain.student.service.GetRandomHash;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +22,7 @@ public class StudentController {
     }
 
     @PostMapping("/attendances")
-    public CanEnterResponse checkCanEnterService(@RequestBody String key){
-        return checkCanEnterService.execute(key);
+    public CheckCanEnterResponse checkCanEnterService(@RequestBody CheckCanEnterRequest checkCanEnterRequest){
+        return checkCanEnterService.execute(checkCanEnterRequest.getKey());
     }
 }

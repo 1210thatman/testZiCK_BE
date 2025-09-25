@@ -5,6 +5,6 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class CanEnterResponse {
+public class CheckCanEnterResponse {
     private final boolean canEnter;
 }
