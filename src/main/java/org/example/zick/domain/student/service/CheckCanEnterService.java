@@ -38,6 +38,10 @@ public class CheckCanEnterService {
         AttendanceLog log = new AttendanceLog(user, mealType, status);
         attendanceLogRepository.save(log);
 
+        if(status){
+            user.updateVerified(true);
+        }
+
         return new CheckCanEnterResponse(status);
     }
 }

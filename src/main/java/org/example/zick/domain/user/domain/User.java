@@ -35,4 +35,8 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     private Role role;
+
+    public void updateVerified(Boolean verified) {
+        this.verified = verified;
+    }
 }
