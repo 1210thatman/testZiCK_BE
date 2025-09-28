@@ -19,10 +19,23 @@ public class MealResetScheduler {
     @Scheduled(cron = "0 0 9 * * *")
     @Transactional
     public void resetBreakfast(){
-        resetAllverifications();
+        resetVerifications();
     }
 
-    private void resetAllverifications(){
+    //점심
+    @Scheduled(cron = "0 0 13 * * *")
+    @Transactional
+    public void resetLunch(){
+        resetVerifications();
+    }
+
+    @Scheduled(cron = "0 0 19 * * *")
+    @Transactional
+    public void resetDinner(){
+        resetVerifications();
+    }
+
+    private void resetVerifications(){
         List<User> users = userRepository.findAll();
         for(User user : users){
             user.updateVerified(false);
