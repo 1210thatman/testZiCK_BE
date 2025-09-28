@@ -12,6 +12,7 @@ import org.example.zick.domain.user.exception.UserNotFoundException;
 import org.example.zick.global.util.MealTypeUtil;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -20,6 +21,7 @@ public class CheckCanEnterService {
     private final UserRepository userRepository;
     private final AttendanceLogRepository attendanceLogRepository;
 
+    @Transactional
     public CheckCanEnterResponse execute(String key){
         String studentIdStr = redisTemplate.opsForValue().get(key);
         if(studentIdStr == null){
