@@ -5,7 +5,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.redis.repository.configuration.EnableRedisRepositories;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
-@EnableRedisRepositories
 @SpringBootApplication
 @EnableScheduling
 public class ZiCkApplication {
